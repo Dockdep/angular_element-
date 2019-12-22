@@ -1,0 +1,25 @@
+.search-dropdown{
+    width: 450px;
+}
+
+.selected-info-item{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    a{
+        display: inline-block;
+        width: 110px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+    span{
+        cursor: pointer;
+        font-size: 18px;
+        width: 20px;
+    }
+}
+.percent-block{
+    width: 60px;
+    margin-left: auto;
+}

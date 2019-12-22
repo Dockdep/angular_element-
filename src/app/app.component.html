@@ -1,0 +1,126 @@
+<div class="btn-group" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" [appDropdown]="dropdownLocation" [dynamicElement]="autoComplete" >Location</button>
+        <div class="dropdown-menu search-dropdown" #dropdownLocation>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Audience">Audience</label>
+                    <ng-autocomplete #autoComplete
+                    [data]="countries"
+                    [searchKeyword]="keyword"
+                    placeHolder="Enter the Country Name"
+            
+            
+                    historyIdentifier="countries"
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">
+                  </ng-autocomplete>
+                  <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                     
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+                <div class="selected-info-list">
+                    <div class="selected-info-item">
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                        <a href="#"> Some really long name </a>
+                        <div class="percent-block">
+                            <select class="form-control">
+                                <option>>1%</option>
+                                <option>>5%</option>
+                                <option>>10%</option>
+                                <option>>15%</option>
+                                <option>>20%</option>
+                                <option>>25%</option>
+                                <option>>30%</option>
+                                <option>>35%</option>
+                                <option>>40%</option>
+                                <option>>45%</option>
+                                <option>>50%</option>
+                                <option>>55%</option>
+                                <option>>60%</option>
+                                <option>>65%</option>
+                                <option>>70%</option>
+                                <option>>75%</option>
+                                <option>>80%</option>
+                                <option>>85%</option>
+                                <option>>90%</option>
+                                <option>>95%</option>
+                              </select>
+                        </div>
+                 
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Influencer">Influencer</label>
+                    <input type="text" class="form-control" id="Influencer" placeholder="Add country or city">
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" >Language</button>
+        <div class="dropdown-menu " #dropdownLanguage>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Audience">Audience</label>
+                    <input type="text" class="form-control" id="Audience" placeholder="Add country or city">
+                </div>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <a href="#"><span class="badge">x</span> Some name </a>
+                    </div>
+                    <div class="col-sm-5">
+                        <select class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Influencer">Influencer</label>
+                    <input type="text" class="form-control" id="Influencer" placeholder="Add country or city">
+                </div>
+    
+            </div>
+    
+        </div>
+    </div>
+ 
+    <button type="button" class="btn btn-default">Brands</button>
+    <button type="button" class="btn btn-default">Interests</button>
+    <button type="button" class="btn btn-default">Gender</button>
+    <button type="button" class="btn btn-default">Ethnicity</button>
+    <button type="button" class="btn btn-default">Age</button>
+    <button type="button" class="btn btn-default">Lookalikes</button>
+  </div>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">Audience Type</button>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">Bio</button>
+    <button type="button" class="btn btn-default">Followers</button>
+    <button type="button" class="btn btn-default">Engagements</button>
+    <button type="button" class="btn btn-default">Contacts</button>
+    <button type="button" class="btn btn-default">Last Post</button>
+    <button type="button" class="btn btn-default">Account Type</button>
+  </div>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default">...</button>
+  </div>
