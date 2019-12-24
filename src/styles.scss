@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.search-dropdown{
+    width: 500px;
+}
+
+.selected-info-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    a{
+        display: inline-block;
+        width: 110px;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+    span{
+        cursor: pointer;
+        font-size: 18px;
+        width: 20px;
+    }
+}
+.percent-block{
+    width: 75px;
+    margin-left: auto;
+    select{
+        padding-right: 0;
+    }
+}

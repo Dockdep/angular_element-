@@ -4,6 +4,7 @@ import { AutocompleteComponent } from 'angular-ng-autocomplete';
 
 @Directive({
     selector: '[appDropdown]',
+    exportAs: 'appDropdown',
     host: {
         '(document:click)': 'outClick($event)',
       }
@@ -11,11 +12,11 @@ import { AutocompleteComponent } from 'angular-ng-autocomplete';
 export class DropdownDirective {
 
     private isOpen = false;
+    private isBlocked = false;
     private elementClassVal: string[] = [];
 
     @Input('appDropdown') element: HTMLElement;
 
-    @Input('dynamicElement') dynamicElement: AutocompleteComponent;
 
     @Input('class')
     @HostBinding('class')
@@ -45,6 +46,15 @@ export class DropdownDirective {
             this.element.style.display = 'block';
         }
     }
+    block() {
+        this.isBlocked = true;
+    }
+
+    unblock() {
+        setTimeout(() => {
+            this.isBlocked = false;
+        }, 100);
+    }
 
     private closeBlock() {
         if (this.isOpen ) {
@@ -57,10 +67,9 @@ export class DropdownDirective {
     }
 
     outClick(event) {
-        console.log(this.dynamicElement.elementRef.nativeElement);
         if (!this.elementRef.nativeElement.contains(event.target)
         && !this.element.contains(event.target)
-        && !this.dynamicElement.elementRef.nativeElement.contains(event.target)) {
+        && !this.isBlocked) {
             this.closeBlock();
         }
     }

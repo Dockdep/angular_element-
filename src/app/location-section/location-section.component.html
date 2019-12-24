@@ -1,0 +1,55 @@
+<button type="button" class="btn btn-default" [appDropdown]="dropdownLocation"  #locationDropdown="appDropdown" >Location</button>
+<div class="dropdown-menu search-dropdown" #dropdownLocation>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="LocationAudience">Audience</label>
+            <input type="text" id="LocationAudience" class="form-control"  placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" (opened)="locationDropdown.block()" (closed)="locationDropdown.unblock()">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class="selected-info-list">
+            <div class="selected-info-item">
+                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                <a href="#"> Some really long name </a>
+                <div class="percent-block">
+                    <select class="form-control">
+                        <option>>1%</option>
+                        <option>>5%</option>
+                        <option>>10%</option>
+                        <option>>15%</option>
+                        <option>>20%</option>
+                        <option>>25%</option>
+                        <option>>30%</option>
+                        <option>>35%</option>
+                        <option>>40%</option>
+                        <option>>45%</option>
+                        <option>>50%</option>
+                        <option>>55%</option>
+                        <option>>60%</option>
+                        <option>>65%</option>
+                        <option>>70%</option>
+                        <option>>75%</option>
+                        <option>>80%</option>
+                        <option>>85%</option>
+                        <option>>90%</option>
+                        <option>>95%</option>
+                    </select>
+                </div>
+         
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="LocationInfluencer">Influencer</label>
+            <input type="text" class="form-control" id="LocationInfluencer" placeholder="Add country or city">
+        </div>
+
+    </div>
+
+</div>
