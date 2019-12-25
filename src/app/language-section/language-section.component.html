@@ -4,7 +4,7 @@
         <div class="form-group">
             <label for="LanguageAudience">Audience</label>
             <input type="text" id="LanguageAudience" class="form-control"  placeholder="Pick one" aria-label="Number" matInput name="test" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" (opened)="languageDropdown.block()" (closed)="languageDropdown.unblock()">
+            <mat-autocomplete (optionSelected)="selected($event)" #auto="matAutocomplete" (opened)="languageDropdown.block()" (closed)="languageDropdown.unblock()">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                 {{option}}
               </mat-option>

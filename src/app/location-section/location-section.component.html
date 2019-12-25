@@ -4,18 +4,21 @@
         <div class="form-group">
             <label for="LocationAudience">Audience</label>
             <input type="text" id="LocationAudience" class="form-control"  placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" (opened)="locationDropdown.block()" (closed)="locationDropdown.unblock()">
+            <mat-autocomplete #auto="matAutocomplete" 
+            (opened)="locationDropdown.block()" 
+            (closed)="locationDropdown.unblock()"
+            (optionSelected)="selectFilter($event)">
               <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                {{option}}
+                {{option.name}}
               </mat-option>
             </mat-autocomplete>
         </div>
         <div class="selected-info-list">
-            <div class="selected-info-item">
+            <div class="selected-info-item" *ngFor="let item of selectedItems">
                 <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-                <a href="#"> Some really long name </a>
+                <a href="#"> {{item.name}} </a>
                 <div class="percent-block">
-                    <select class="form-control">
+                    <select class="form-control" [value]="item.pct">
                         <option>>1%</option>
                         <option>>5%</option>
                         <option>>10%</option>

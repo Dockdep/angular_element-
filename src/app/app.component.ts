@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
+import { RequestBody } from './models/request';
 
 
 @Component({
@@ -6,6 +7,13 @@ import { Component, OnInit, ViewChildren } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
-  title = 'qrmap-filter';
+export class AppComponent {
+  public data: RequestBody;
+  constructor(private el: ElementRef) {
+    this.data = this.getData();
+  }
+
+  private getData(): RequestBody {
+    return JSON.parse(this.el.nativeElement.getAttribute('data'));
+  }
 }

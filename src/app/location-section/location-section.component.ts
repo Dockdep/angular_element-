@@ -1,29 +1,50 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
+import { Component, OnInit, ViewChildren, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { FilterData } from '../models/request';
+import TaxonomyCountry from '../models/taxonomy-country';
 
 @Component({
-  selector: '[app-location-section]',
-  templateUrl: './location-section.component.html',
-  styleUrls: ['./location-section.component.scss']
+    selector: '[app-location-section]',
+    templateUrl: './location-section.component.html',
+    styleUrls: ['./location-section.component.scss']
 })
 export class LocationSectionComponent implements OnInit {
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
-  constructor() { }
+    @Input() data: FilterData[];
+    selectedItems = [];
+    myControl = new FormControl();
+    options: TaxonomyCountry[];
+    filteredOptions: Observable<TaxonomyCountry[]>;
+    constructor() { }
 
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-  }
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+    selectFilter(item) {
+        const selectedItem = item.option.value;
+        this.myControl.setValue('');
+        selectedItem.pct = '>5%';
+        this.selectedItems.push(selectedItem);
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+    }
+
+    ngOnInit() {
+        const testCountry1 = new TaxonomyCountry();
+        testCountry1.name = 'Test 1';
+        testCountry1.id = 1;
+        const testCountry2 = new TaxonomyCountry();
+        testCountry2.name = 'Test 2';
+        testCountry2.id = 2;
+        this.options = [testCountry1, testCountry2];
+        this.filteredOptions = this.myControl.valueChanges
+            .pipe(
+                startWith(''),
+                map(value => this._filter(value))
+            );
+    }
+
+    private _filter(value: string | TaxonomyCountry): TaxonomyCountry[] {
+        if (typeof(value) === 'string') {
+            const filterValue = value.toLowerCase();
+            return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+        }
+    }
 }

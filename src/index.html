@@ -12,7 +12,49 @@
 </head>
 <body>
   <form action="/" method="GET">
-    <app-root></app-root>
+    <app-root data='{
+        "paging": {
+            "skip": null, 
+            "limit": 10
+        },
+        "filter": {
+            "engagement_rate": {"value": 0.060, "operator": "gte"},
+            "engagements": {"left_number": 200, "right_number": 500},
+            "followers": {"left_number": 10000, "right_number": 25000},
+            "views": {"left_number": 0, "right_number": 0},
+            "audience_gender": {"code": "FEMALE", "weight": 0.5},
+            "audience_race": {"code": "Asian", "weight": 0.3},
+            "race": {"code": "", "weight": 0},
+            "gender": {"code": "MALE", "weight": 0},
+            "last_posted": 30,
+            "has_audience_data": true,
+            "only": "known",
+            "is_hidden": false,
+            "is_verified": true,
+            "has_ads": true,
+            "audience_geo": [{"id": 60199, "weight": 0.05}, {"id": 600000431, "weight": 0.05}],
+            "geo": [{"id": 52411, "weight": 0.05}],
+            "lang": {"code": "en"},
+            "audience_lang": {"code": "pt", "weight": 0.2},
+            "age": {"left_number": 25, "right_number": 44},
+            "audience_age": [{"code": "18-24", "weight": 0.2}],
+            "audience_brand": [{"id": 607, "weight": 0.05}, {"id": 1058, "weight": 0.05}],
+            "audience_brand_category": [{"id": 7, "weight": 0.1}, {"id": 13, "weight": 0.1}],
+            "brand": [1238, 1828],
+            "brand_category": [1, 11],
+            "relevance": {"value": "@therock", "weight": 0},
+            "audience_relevance": {"value": "taeyeon_ss"},
+            "text": "ytf",
+            "with_contact": [{"type": "email", "action": "should"}, {"type": "youtube", "action": "should"}],
+            "audience_credibility_class": ["low", "normal", "high", "best"],
+            "account_type": [1]
+        },
+        "sort": {
+            "field": "relevance",
+            "direction": "desc",
+            "audience_source": "likers"
+        }
+    }'></app-root>
     <button type="submit">Send</button>
   </form>
  
